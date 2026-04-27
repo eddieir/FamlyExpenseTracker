@@ -15,10 +15,7 @@ let realtimeChannel = null;
 //  BOOT — runs after ALL scripts (including unpkg) are loaded
 // =========================================================
 
-window.addEventListener('load', function() {
-  // Give unpkg bundle an extra tick to register its globals
-  setTimeout(initApp, 50);
-});
+window.addEventListener('load', initApp);
 
 function initApp() {
   // Validate config values

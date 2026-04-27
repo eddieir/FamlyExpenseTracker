@@ -34,7 +34,7 @@
           <input type="password" id="auth-pass" class="field-input" placeholder="Enter shared password" onkeydown="if(event.key==='Enter')login()" />
         </div>
         <button class="auth-submit" onclick="login()">Enter</button>
-        <div class="auth-error" id="auth-error">Incorrect password. Try again.</div>
+        <div class="auth-error" id="auth-error"></div>
       </div>
     </div>
   </div>
@@ -50,31 +50,15 @@
           <div class="sidebar-month" id="sidebar-month-label">May 2026</div>
         </div>
       </div>
-
       <nav class="sidebar-nav">
-        <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
-          <span class="nav-icon">◈</span> Dashboard
-        </div>
-        <div class="nav-item" data-page="expenses" onclick="showPage('expenses')">
-          <span class="nav-icon">✦</span> Log Expenses
-        </div>
-        <div class="nav-item" data-page="budget" onclick="showPage('budget')">
-          <span class="nav-icon">◉</span> Budget Caps
-        </div>
-        <div class="nav-item" data-page="food" onclick="showPage('food')">
-          <span class="nav-icon">❋</span> Food Plan
-        </div>
-        <div class="nav-item" data-page="glovo" onclick="showPage('glovo')">
-          <span class="nav-icon">◎</span> Glovo Tracker
-        </div>
-        <div class="nav-item" data-page="history" onclick="showPage('history')">
-          <span class="nav-icon">◷</span> History
-        </div>
-        <div class="nav-item" data-page="rules" onclick="showPage('rules')">
-          <span class="nav-icon">◐</span> Rules
-        </div>
+        <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')"><span class="nav-icon">◈</span> Dashboard</div>
+        <div class="nav-item" data-page="expenses" onclick="showPage('expenses')"><span class="nav-icon">✦</span> Log Expenses</div>
+        <div class="nav-item" data-page="budget" onclick="showPage('budget')"><span class="nav-icon">◉</span> Budget Caps</div>
+        <div class="nav-item" data-page="food" onclick="showPage('food')"><span class="nav-icon">❋</span> Food Plan</div>
+        <div class="nav-item" data-page="glovo" onclick="showPage('glovo')"><span class="nav-icon">◎</span> Glovo Tracker</div>
+        <div class="nav-item" data-page="history" onclick="showPage('history')"><span class="nav-icon">◷</span> History</div>
+        <div class="nav-item" data-page="rules" onclick="showPage('rules')"><span class="nav-icon">◐</span> Rules</div>
       </nav>
-
       <div class="sidebar-footer">
         <div class="sidebar-user">
           <div class="user-avatar" id="sidebar-avatar">P</div>
@@ -94,59 +78,41 @@
     </div>
 
     <main id="main-content">
-
-      <!-- LOADING OVERLAY -->
       <div id="loading-overlay">
         <div class="spinner"></div>
         <div class="loading-text">Syncing data…</div>
       </div>
 
-      <!-- MONTH SWITCHER BAR -->
       <div class="month-bar">
         <button class="month-nav" onclick="changeMonth(-1)">‹ Prev</button>
         <div class="month-label" id="month-display">May 2026</div>
         <button class="month-nav" onclick="changeMonth(1)" id="btn-next-month">Next ›</button>
       </div>
 
-      <!-- DASHBOARD PAGE -->
+      <!-- DASHBOARD -->
       <div id="page-dashboard" class="page active">
         <div class="page-header">
           <h1 class="page-title" id="dash-title">May 2026</h1>
           <div class="page-hint" id="dash-date"></div>
         </div>
-
         <div class="summary-strip" id="dash-summary-strip"></div>
-
         <div class="two-col">
-          <div class="card">
-            <div class="card-head">Spending by category</div>
-            <div id="cat-progress"></div>
-          </div>
-          <div class="card">
-            <div class="card-head">Recent transactions</div>
-            <div id="recent-txns"></div>
-          </div>
+          <div class="card"><div class="card-head">Spending by category</div><div id="cat-progress"></div></div>
+          <div class="card"><div class="card-head">Recent transactions</div><div id="recent-txns"></div></div>
         </div>
-
         <div class="card" style="margin-top:20px">
           <div class="card-head">Category snapshot</div>
           <div class="metric-grid" id="status-grid"></div>
         </div>
       </div>
 
-      <!-- EXPENSES PAGE -->
+      <!-- EXPENSES -->
       <div id="page-expenses" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Log an Expense</h1>
-        </div>
-
+        <div class="page-header"><h1 class="page-title">Log an Expense</h1></div>
         <div class="card" style="margin-bottom:20px">
           <div class="card-head">New entry</div>
           <div class="form-row">
-            <div class="fg">
-              <label class="fl">Date</label>
-              <input type="date" id="exp-date" class="fi" />
-            </div>
+            <div class="fg"><label class="fl">Date</label><input type="date" id="exp-date" class="fi" /></div>
             <div class="fg">
               <label class="fl">Category</label>
               <select id="exp-cat" class="fi">
@@ -160,35 +126,21 @@
                 <option value="utilities">💡 Utilities / Phone</option>
               </select>
             </div>
-            <div class="fg">
-              <label class="fl">Amount (€)</label>
-              <input type="number" id="exp-amount" class="fi" placeholder="0.00" step="0.01" min="0" />
-            </div>
-            <div class="fg fg-wide">
-              <label class="fl">Note</label>
-              <input type="text" id="exp-note" class="fi" placeholder="What was this for?" />
-            </div>
-            <div class="fg fg-btn">
-              <label class="fl">&nbsp;</label>
-              <button class="btn-add" onclick="addExpense()">+ Add</button>
-            </div>
+            <div class="fg"><label class="fl">Amount (€)</label><input type="number" id="exp-amount" class="fi" placeholder="0.00" step="0.01" min="0" /></div>
+            <div class="fg fg-wide"><label class="fl">Note</label><input type="text" id="exp-note" class="fi" placeholder="What was this for?" /></div>
+            <div class="fg fg-btn"><label class="fl">&nbsp;</label><button class="btn-add" id="btn-add-expense" onclick="addExpense()">+ Add</button></div>
           </div>
         </div>
-
         <div class="card">
           <div class="card-head-row">
             <div class="card-head">All expenses</div>
             <div style="display:flex;gap:8px;align-items:center">
               <select id="filter-cat" class="fi-sm" onchange="renderExpenses()">
                 <option value="">All categories</option>
-                <option value="food">Food</option>
-                <option value="transport">Transport</option>
-                <option value="beauty">Beauty</option>
-                <option value="health">Health</option>
-                <option value="other">Other</option>
-                <option value="rent">Rent</option>
-                <option value="debt">Debt</option>
-                <option value="utilities">Utilities</option>
+                <option value="food">Food</option><option value="transport">Transport</option>
+                <option value="beauty">Beauty</option><option value="health">Health</option>
+                <option value="other">Other</option><option value="rent">Rent</option>
+                <option value="debt">Debt</option><option value="utilities">Utilities</option>
               </select>
               <button class="btn-ghost" onclick="exportCSV()">↓ CSV</button>
             </div>
@@ -197,48 +149,23 @@
         </div>
       </div>
 
-      <!-- BUDGET PAGE -->
+      <!-- BUDGET -->
       <div id="page-budget" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Budget Caps</h1>
-          <div class="page-hint">Rescue plan targets</div>
-        </div>
+        <div class="page-header"><h1 class="page-title">Budget Caps</h1><div class="page-hint">Rescue plan targets</div></div>
         <div class="card">
           <div class="table-wrap">
-            <table class="data-table" id="budget-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Cap (€)</th>
-                  <th>Spent (€)</th>
-                  <th>Remaining (€)</th>
-                  <th>Old avg (€)</th>
-                  <th>Saving (€)</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
+            <table class="data-table">
+              <thead><tr><th>Category</th><th>Cap (€)</th><th>Spent (€)</th><th>Remaining (€)</th><th>Old avg (€)</th><th>Saving (€)</th><th>Status</th></tr></thead>
               <tbody id="budget-tbody"></tbody>
-              <tfoot>
-                <tr>
-                  <td><strong>TOTAL</strong></td>
-                  <td id="bft-plan"></td>
-                  <td id="bft-spent"></td>
-                  <td id="bft-rem"></td>
-                  <td>€3,176</td>
-                  <td id="bft-saving" style="color:var(--green)"></td>
-                  <td></td>
-                </tr>
-              </tfoot>
+              <tfoot><tr><td><strong>TOTAL</strong></td><td id="bft-plan"></td><td id="bft-spent"></td><td id="bft-rem"></td><td>€3,176</td><td id="bft-saving" style="color:var(--green)"></td><td></td></tr></tfoot>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- FOOD PAGE -->
+      <!-- FOOD -->
       <div id="page-food" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Food Budget & Meal Plan</h1>
-        </div>
+        <div class="page-header"><h1 class="page-title">Food Budget & Meal Plan</h1></div>
         <div class="metric-grid four" style="margin-bottom:20px">
           <div class="metric"><div class="ml">Monthly cap</div><div class="mv">€400</div></div>
           <div class="metric good"><div class="ml">Planned spend</div><div class="mv">€362</div></div>
@@ -270,24 +197,19 @@
         </div>
         <div class="card">
           <div class="card-head">7-day repeatable meal plan</div>
-          <div class="meal-header">
-            <div>Day</div><div>Breakfast</div><div>Lunch</div><div>Dinner</div><div>~Cost</div>
-          </div>
+          <div class="meal-header"><div>Day</div><div>Breakfast</div><div>Lunch</div><div>Dinner</div><div>~Cost</div></div>
           <div id="meal-rows"></div>
         </div>
       </div>
 
-      <!-- GLOVO PAGE -->
+      <!-- GLOVO -->
       <div id="page-glovo" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Glovo Tracker</h1>
-          <div class="page-hint">Company benefit — log every workday</div>
-        </div>
+        <div class="page-header"><h1 class="page-title">Glovo Tracker</h1><div class="page-hint">Company benefit — log every workday</div></div>
         <div class="metric-grid four" style="margin-bottom:20px">
           <div class="metric"><div class="ml">Lunch cap/day</div><div class="mv">€10</div></div>
           <div class="metric"><div class="ml">Pantry cap/day</div><div class="mv">€10</div></div>
           <div class="metric good"><div class="ml">Personal top-up target</div><div class="mv">€0</div></div>
-          <div class="metric" id="g-days-metric"><div class="ml">Days logged</div><div class="mv" id="g-days-count">0</div></div>
+          <div class="metric"><div class="ml">Days logged</div><div class="mv" id="g-days-count">0</div></div>
         </div>
         <div class="card" style="margin-bottom:20px">
           <div class="card-head">Log a workday</div>
@@ -299,42 +221,29 @@
             <div class="fg fg-btn"><label class="fl">&nbsp;</label><button class="btn-add" onclick="addGlovo()">Log</button></div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-head">May 2026 workdays</div>
-          <div id="glovo-list"></div>
-        </div>
+        <div class="card"><div class="card-head">Workdays this month</div><div id="glovo-list"></div></div>
       </div>
 
-      <!-- HISTORY PAGE -->
+      <!-- HISTORY -->
       <div id="page-history" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Monthly History</h1>
-          <div class="page-hint">All months — full expense archive</div>
-        </div>
+        <div class="page-header"><h1 class="page-title">Monthly History</h1><div class="page-hint">All months — full expense archive</div></div>
         <div id="history-content"></div>
       </div>
 
-      <!-- RULES PAGE -->
+      <!-- RULES -->
       <div id="page-rules" class="page">
-        <div class="page-header">
-          <h1 class="page-title">Rules & Decisions</h1>
-        </div>
+        <div class="page-header"><h1 class="page-title">Rules & Decisions</h1></div>
         <div class="two-col">
-          <div class="card">
-            <div class="card-head">Spending rules</div>
-            <div id="rules-list"></div>
-          </div>
-          <div class="card">
-            <div class="card-head">Decision guide</div>
-            <div id="decisions-list"></div>
-          </div>
+          <div class="card"><div class="card-head">Spending rules</div><div id="rules-list"></div></div>
+          <div class="card"><div class="card-head">Decision guide</div><div id="decisions-list"></div></div>
         </div>
       </div>
 
     </main>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Pinned UMD build — exposes window.supabase.createClient globally -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2.39.7/dist/umd/supabase.js"></script>
   <script src="js/config.js"></script>
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>

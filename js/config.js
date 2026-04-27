@@ -3,8 +3,8 @@
 //  You get these from: https://supabase.com → Project Settings → API
 // ============================================================
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';       // e.g. https://xyzabcdef.supabase.co
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY'; // the long anon/public key
+const SUPABASE_URL      = 'https://yrllnxjzdqkumlphuhlq.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlybGxueGp6ZHFrdW1scGh1aGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyNzcyNzcsImV4cCI6MjA5Mjg1MzI3N30.zKklGzgNxPaAp46NdixSio99isO_LS1ZV8FZ1qbnoJ8'; // the full key you copied
 
 // ============================================================
 //  APP USERS — username → password (shared password for family)

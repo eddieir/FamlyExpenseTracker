@@ -19,10 +19,10 @@ window.addEventListener('load', initApp);
 
 function initApp() {
   // Validate config values
-  if (!window.SUPABASE_URL || SUPABASE_URL === 'YOUR_SUPABASE_URL') {
+  if (typeof SUPABASE_URL === 'undefined' || !SUPABASE_URL || SUPABASE_URL === 'YOUR_SUPABASE_URL') {
     showBanner('SUPABASE_URL is not set in js/config.js'); return;
   }
-  if (!window.SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
+  if (typeof SUPABASE_ANON_KEY === 'undefined' || !SUPABASE_ANON_KEY || SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY') {
     showBanner('SUPABASE_ANON_KEY is not set in js/config.js'); return;
   }
 
@@ -151,6 +151,7 @@ function changeMonth(dir) {
 }
 
 async function loadCurrentMonth() {
+  if (!ensureSupabaseReady()) return;
   showLoading(true);
   var mk = monthKey(currentYear, currentMonth);
   try {
@@ -230,11 +231,18 @@ function showToast(msg, isError) {
   toastTimer = setTimeout(function() { t.classList.remove('visible'); }, 3500);
 }
 
+function ensureSupabaseReady() {
+  if (sb) return true;
+  showToast('Supabase is not initialized. Check js/config.js and reload.', true);
+  return false;
+}
+
 // =========================================================
 //  EXPENSES
 // =========================================================
 
 async function addExpense() {
+  if (!ensureSupabaseReady()) return;
   var dateEl   = document.getElementById('exp-date');
   var catEl    = document.getElementById('exp-cat');
   var amountEl = document.getElementById('exp-amount');
@@ -291,6 +299,7 @@ async function deleteExpense(id) {
 // =========================================================
 
 async function addGlovo() {
+  if (!ensureSupabaseReady()) return;
   var date   = document.getElementById('g-date').value;
   var lunch  = parseFloat(document.getElementById('g-lunch').value)  || 0;
   var topup  = parseFloat(document.getElementById('g-topup').value)  || 0;
@@ -451,6 +460,7 @@ function renderGlovo() {
 // =========================================================
 
 async function renderHistory() {
+  if (!ensureSupabaseReady()) return;
   var cont = document.getElementById('history-content');
   if (!cont) return;
   cont.innerHTML = '<div class="empty"><div class="spinner" style="margin:0 auto"></div><div class="empty-text" style="margin-top:12px">Loading…</div></div>';
